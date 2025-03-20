@@ -46,3 +46,21 @@ jobs:
           newsclassify: ${{ secrets.NEWSCLASSIFY }}
         run: |
           dvc repro
+
+      - name: Run model tests
+        env:
+          newsclassify: ${{ secrets.NEWSCLASSIFY }}
+        run: |
+          python -m unittest tests/test_model.py
+
+      - name: Promote model to production
+        if: success()
+        env:
+          newsclassify: ${{ secrets.NEWSCLASSIFY }}
+        run: python scripts/promote_model.py
+
+      - name: Run Flask app tests
+        if: success()
+        env:
+          newsclassify: ${{ secrets.NEWSCLASSIFY }}
+        run: python -m unittest tests/test_flask_app.py    

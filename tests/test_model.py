@@ -49,7 +49,7 @@ class TestModelLoading(unittest.TestCase):
 
     def test_model_signature(self):
         # Create a dummy input for the model based on expected input shape
-        input_text = "hi how are you"
+        input_text = "Breaking news: AI is transforming industries."
         input_data = self.vectorizer.transform([input_text])
         input_df = pd.DataFrame(input_data.toarray(), columns=[str(i) for i in range(input_data.shape[1])])
 
