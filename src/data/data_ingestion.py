@@ -10,7 +10,7 @@ from sklearn.preprocessing import LabelEncoder
 import yaml
 import logging
 from src.logger import logging
-from src.connections import s3_connection
+#from src.connections import s3_connection
 
 
 def load_params(params_path: str) -> dict:
@@ -78,7 +78,7 @@ def main():
         #test_size = 0.2
         
         df = load_data(data_url='./notebooks/sample.csv')
-        #s3 = s3_connection.s3_operations("newsclassify", "AKIA3LET6G5DOK2XDIDS", "xC3Xs/bq1tkPavWt46qmFeMqUotue6G+/vG+Bfcu")
+        #s3 = s3_connection.s3_operations("", "", "")
         #df = s3.fetch_file_from_s3("sample.csv")
 
 
