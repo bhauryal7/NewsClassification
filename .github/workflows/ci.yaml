@@ -42,7 +42,7 @@ jobs:
           path: .
 
       - name: run pipeline
-        # env:
-          # CAPSTONE_TEST: ${{ secrets.CAPSTONE_TEST }}
+        env:
+          newsclassify: ${{ secrets.newsclassify }}
         run: |
           dvc repro
