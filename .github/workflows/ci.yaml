@@ -43,6 +43,6 @@ jobs:
 
       - name: run pipeline
         env:
-          newsclassify: ${{ secrets.newsclassify }}
+          newsclassify: ${{ secrets.NEWSCLASSIFY }}
         run: |
           dvc repro
