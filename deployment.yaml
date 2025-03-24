@@ -15,8 +15,8 @@ spec:
         app: flask-app
     spec:
       containers:
-      - name: newsclassify-app
-        image: 779846825798.dkr.ecr.eu-north-1.amazonaws.com/newsclassify-app:latest
+      - name: flask-app
+        image: 779846825798.dkr.ecr.eu-north-1.amazonaws.com/flask-app
         ports:
         - containerPort: 5001
         resources:
