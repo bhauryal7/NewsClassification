@@ -106,7 +106,7 @@ jobs:
 
       - name: Create Kubernetes Secret
         run: |
-          kubectl create secret generic capstone-secret \
+          kubectl create secret generic newsclassify-secret \
             --from-literal=NEWSCLASSIFY=${{ secrets.NEWSCLASSIFY }} --dry-run=client -o yaml | kubectl apply -f -
 
       - name: Deploy to EKS
