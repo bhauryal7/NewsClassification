@@ -27,11 +27,11 @@ spec:
             memory: "512Mi"
             cpu: "1"
         env:
-        - name: NEWSCLASSIFY
+        - name: newsclassify
           valueFrom:
             secretKeyRef:
               name: newsclassify-secret
-              key: NEWSCLASSIFY
+              key: newsclassify
 
 ---
 apiVersion: v1
