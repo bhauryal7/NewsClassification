@@ -1,57 +1,48 @@
-NewsClassification
-==============================
+# News Classification Project
 
-Text classification of news articles
+## Overview
+This project focuses on classifying news articles into different categories using machine learning techniques. The dataset consists of news articles with their corresponding categories, and the model is trained to predict the category of a given news article based on its text.
 
-Project Organization
-------------
+## Features
+- Preprocessing of text data (tokenization, stopword removal, TF-IDF transformation, etc.)
+- Implementation of multiple machine learning models (e.g., Logistic Regression, Multinomial Naive Bayes, Random Forest, Gradient Boosting, Support Vector Machine, Stochastic Gradient Descent, XGBoost)
+- Evaluation of model performance using accuracy, precision, recall, and F1-score
+- Hyperparameter tuning to improve model performance
 
-    ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
-    ├── README.md          <- The top-level README for developers using this project.
-    ├── data
-    │   ├── external       <- Data from third party sources.
-    │   ├── interim        <- Intermediate data that has been transformed.
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
-    │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
-    │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
-    │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-    │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
-    │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
-    │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
-    │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
-    │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
-    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
+## Dataset
+- The dataset consists of news articles labeled with their respective categories.
+- Each entry includes:
+  - `Title`: The headline of the news article
+  - `Topic`: The label assigned to the article
 
 
---------
+## Installation 
+To set up the project, install the required dependencies using:
+pip install -r requirements.txt
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+
+## Results
+- Model performance (Accuracy):
+  - Logistic Regression: 71.25%
+  - Multinomial Naive Bayes: 71.95% 
+  - XGBoost: 65.65% 
+  - Random Forest: 65.45%
+  - Gradient Boosting: 61.65%
+  - Support Vector Machine: 71.7%
+  - Stochastic Gradient Decent: 72.55%
+  
+## Deployment & Monitoring
+
+CI/CD: Implemented using GitHub Actions for automated testing, building, and deployment.
+Deployment: The model is deployed as a web service using [deployment method (e.g., Docker, Kubernetes, FastAPI)].
+Monitoring: Prometheus collects system and application metrics, while Grafana is used for visualization and alerting.
+
+
+## Future Improvements
+- Improve data preprocessing and feature extraction
+- Experiment with more advanced deep learning models like LSTM, BERT etc.
+
+
+## Acknowledgments
+- Dataset provided by DeepLearning.AI
+
