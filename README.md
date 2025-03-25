@@ -1,14 +1,13 @@
 # News Classification Project
 
 ## Overview
-This project focuses on classifying news articles into different categories using machine learning techniques. The dataset consists of news articles with their corresponding categories, and the model is trained to predict the category of a given news article based on its text.
+This project focuses on MLOps for classifying news articles into different categories using machine learning techniques. It covers the entire lifecycle from data preprocessing, model training, and evaluation to  deplyoment and monitoring. The dataset consists of news articles with their corresponding categories, and the model is trained to predict the category of a given news article based on its text.
 
 ## Features
 - Preprocessing of text data (tokenization, stopword removal, TF-IDF transformation, etc.)
 - Implementation of multiple machine learning models (e.g., Logistic Regression, Multinomial Naive Bayes, Random Forest, Gradient Boosting, Support Vector Machine, Stochastic Gradient Descent, XGBoost)
 - Evaluation of model performance using accuracy, precision, recall, and F1-score
 - Hyperparameter tuning to improve model performance
-- Deployment script (if applicable)
 
 ## Dataset
 - The dataset consists of news articles labeled with their respective categories.
