@@ -28,7 +28,7 @@ warnings.filterwarnings("ignore")
 
 # ========================== CONFIGURATION ==================================
 CONFIG = {
-    "data_path": "notebooks/sample.csv",
+    "data_path": "notebooks/backup.csv",
     "test_size": 0.2,
     "mlflow_tracking_uri": "https://dagshub.com/bhauryal7/NewsClassification.mlflow",
     "dagshub_repo_owner": "bhauryal7",
@@ -107,8 +107,8 @@ def load_data(file_path):
 
 # ========================== FEATURE ENGINEERING ==========================
 VECTORIZERS = {
-    'BoW': CountVectorizer(),
-    'TF-IDF': TfidfVectorizer()
+    'BoW': CountVectorizer(max_features=20000),
+    'TF-IDF': TfidfVectorizer(max_features=20000)
 }
 
 ALGORITHMS = {

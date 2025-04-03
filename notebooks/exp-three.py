@@ -7,7 +7,7 @@ import mlflow
 import mlflow.sklearn
 import dagshub
 from sklearn.model_selection import train_test_split, GridSearchCV
-from sklearn.linear_model import SGDClassifier
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from sklearn.preprocessing import LabelEncoder
 from nltk.corpus import stopwords
@@ -21,7 +21,7 @@ warnings.filterwarnings("ignore")
 MLFLOW_TRACKING_URI = "https://dagshub.com/bhauryal7/NewsClassification.mlflow"
 dagshub.init(repo_owner="bhauryal7", repo_name="NewsClassification", mlflow=True)
 mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
-mlflow.set_experiment("Stochastic Gradient Descent Hyperparameter Tuning")
+mlflow.set_experiment("Logistic Regression Hyperparameter Tuning")
 
 
 # ========================== TEXT PREPROCESSING ===============================
@@ -79,7 +79,7 @@ def normalize_text(df):
 # ==========================
 # Load & Prepare Data
 # ==========================
-from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 vectorizer = TfidfVectorizer()
 label_encoder = LabelEncoder()
@@ -99,29 +99,28 @@ def load_and_prepare_data(filepath):
 # Train & Log Model
 # ==========================
 def train_and_log_model(X_train, X_test, y_train, y_test):
-    """Trains a Stochasti Gradient model with GridSearch and logs results to MLflow."""
+    """Trains a Logistic Regression model with GridSearch and logs results to MLflow."""
     
+
     param_grid = {
-    'loss': ['hinge', 'log_loss', 'modified_huber'],  # SVM, logistic regression, and robust loss
-    'penalty': ['l1', 'l2', 'elasticnet'],  # Regularization methods
-    'alpha': [1e-4, 1e-3, 1e-2],  # Regularization strength
-    #'learning_rate': ['optimal', 'constant', 'invscaling', 'adaptive'],  # Learning rate strategies
-    #'eta0': [0.001, 0.01, 0.1],  # Initial learning rate (only for 'constant' learning rate)
-    #'early_stopping': [True, False],  # Whether to use early stopping
-    #'tol': [1e-3, 1e-4, 1e-5],  # Stopping tolerance
+    'C': [1, 10, 100],  # Inverse regularization strength
+    'penalty': ['l2'],              # L2 regularization (default)
+    'solver': ['sag', 'lbfgs'],     # Solvers for large datasets
+    'max_iter': [2000],         # Increase if not converging
+    'class_weight': [None, 'balanced']  # Handle class imbalance
 }
 
     
     with mlflow.start_run():
-        grid_search = GridSearchCV(SGDClassifier(max_iter=1000), param_grid, cv=5, scoring="accuracy", n_jobs=-1)
+        grid_search = GridSearchCV(LogisticRegression(), param_grid, cv=5, scoring="accuracy", n_jobs=-1)
         grid_search.fit(X_train, y_train)
 
         # Log all hyperparameter tuning runs
         for params, mean_score, std_score in zip(grid_search.cv_results_["params"], 
                                                  grid_search.cv_results_["mean_test_score"], 
                                                  grid_search.cv_results_["std_test_score"]):
-            with mlflow.start_run(run_name=f"SGD with params: {params}", nested=True):
-                model = SGDClassifier(**params)
+            with mlflow.start_run(run_name=f"LR with params: {params}", nested=True):
+                model = LogisticRegression(**params)
                 model.fit(X_train, y_train)
                 
                 y_pred = model.predict(X_test)
@@ -157,5 +156,5 @@ def train_and_log_model(X_train, X_test, y_train, y_test):
 # Main Execution
 # ==========================
 if __name__ == "__main__":
-    (X_train, X_test, y_train, y_test) = load_and_prepare_data("notebooks/sample.csv")
+    (X_train, X_test, y_train, y_test) = load_and_prepare_data("notebooks/backup.csv")
     train_and_log_model(X_train, X_test, y_train, y_test)

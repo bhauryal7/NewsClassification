@@ -77,7 +77,7 @@ def main():
         test_size = params['data_ingestion']['test_size']
         #test_size = 0.2
         
-        df = load_data(data_url='./notebooks/sample.csv')
+        df = load_data(data_url='./notebooks/backup.csv')
         # s3 = s3_connection.s3_operations("", "", "")
         # df = s3.fetch_file_from_s3("sample.csv")
 

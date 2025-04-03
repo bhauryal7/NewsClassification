@@ -21,21 +21,23 @@ To set up the project, install the required dependencies using:
 pip install -r requirements.txt
 
 
-## Results
-- Model performance (Accuracy):
-  - Logistic Regression: 71.25%
-  - Multinomial Naive Bayes: 71.95% 
-  - XGBoost: 65.65% 
-  - Random Forest: 65.45%
-  - Gradient Boosting: 61.65%
-  - Support Vector Machine: 71.7%
-  - Stochastic Gradient Decent: 72.55%
+## Model Performance Comparison
+
+| Model(with TF-IDF)                      | Accuracy | F1-Score | Recall | Precision |
+|-----------------------------|----------|----------|--------|-----------|
+| Logistic Regression         | 0.80     | 0.80     | 0.80   | 0.80      |
+| Multinomial Naive Bayes     | 0.79     | 0.80     | 0.79   | 0.79      |
+| XGBoost                     | 0.72     | 0.73     | 0.72   | 0.74      |
+| Gradient Boost              | 0.64     | 0.66     | 0.64   | 0.71      |
+| Random Forest               | 0.76     | 0.75     | 0.76   | 0.76      |
+| SVM (Linear)                | 0.82     | 0.82     | 0.82   | 0.83      |
+| Stochastic Gradient Descent | 0.78     | 0.78     | 0.78   | 0.78      |
   
 ## Deployment & Monitoring
 
 CI/CD: Implemented using GitHub Actions for automated testing, building, and deployment.
 Deployment: The model is deployed as a web service using [deployment method (e.g., Docker, Kubernetes, FastAPI)].
-Monitoring: Prometheus collects system and application metrics, while Grafana is used for visualization and alerting.
+<!-- Monitoring: Prometheus collects system and application metrics, while Grafana is used for visualization and alerting. -->
 
 
 ## Future Improvements
